@@ -2,18 +2,37 @@ import os
 import sys
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-%matplotlib inline
-sns.set()
-# Setting seed for reproducability
-np.random.seed(1234)  
-PYTHONHASHSEED = 0
 
+#LSTM model
+class LSTMRegressor(nn.Module):
+    def __init__(self, lstm_input_layer, lstm_hidden_layer, lstm_output_layer, batch):
+        super().__init__()
+        self.input_layer = lstm_input_layer
+        self.hidden_layer = lstm_hidden_layer
+        self.output_layer = lstm_output_layer
+        self.batch = batch
+        self.lstm = nn.LSTM(self.input_layer, self.hidden_layer, batch_first=True)
+        #output size is
+        # seq_len, batch, num_directions * hidden_size
+        self.linear = nn.Linear(self.hidden_layer, self.output_layer)
+    
+    def init_hidden(self, batch_size):
+        hidden_state = torch.zeros(1, batch_size, self.hidden_layer)
+        cell_state = torch.zeros(1, batch_size, self.hidden_layer)
+        self.hidden = (hidden_state, cell_state)
+        
+        
+    def forward(self, x):
+        batch = x.size(0)
+        lstm_out, self.hidden = self.lstm(x, self.hidden)
+        ret = self.linear(self.hidden[0][0].view(batch, -1))
+        return ret
+
+#LSTM and CNN model
 class DAG_CNN_LSTM_Regressor(nn.Module):
   def __init__(self,L1_input_size, L1_hidden_size, conv_size, 
               conv_stride, maxpool_size, maxpool_stride, L2_input_size, L2_hidden_size, output_size):
