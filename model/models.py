@@ -9,12 +9,11 @@ import torch.optim as optim
 
 #LSTM model
 class LSTMRegressor(nn.Module):
-    def __init__(self, lstm_input_layer, lstm_hidden_layer, lstm_output_layer, batch):
+    def __init__(self, lstm_input_layer, lstm_hidden_layer, lstm_output_layer):
         super().__init__()
         self.input_layer = lstm_input_layer
         self.hidden_layer = lstm_hidden_layer
         self.output_layer = lstm_output_layer
-        self.batch = batch
         self.lstm = nn.LSTM(self.input_layer, self.hidden_layer, batch_first=True)
         #output size is
         # seq_len, batch, num_directions * hidden_size
