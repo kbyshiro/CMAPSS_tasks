@@ -22,8 +22,8 @@ class DataSet:
     
 
 class FD_Dataset():
-  def __init__(self):
-    self._dataset_path ="/content/drive/My Drive/CMAPSSData"
+  def __init__(self, dataset_path="/content/drive/My Drive/CMAPSSData"):
+    self._dataset_path = dataset_path
     
     # the files did not contain headers. Here we create labels based on documentation
     index_columns_names =  ["UnitNumber","Cycle"]
