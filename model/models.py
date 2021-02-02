@@ -34,7 +34,7 @@ class LSTMRegressor(nn.Module):
 #LSTM and CNN model
 class DAG_CNN_LSTM_Regressor(nn.Module):
   def __init__(self,L1_input_size, L1_hidden_size, conv_size, 
-              conv_stride, maxpool_size, maxpool_stride, L2_input_size, L2_hidden_size, output_size):
+              conv_stride,conv_out_size, maxpool_size, maxpool_stride, L2_input_size, L2_hidden_size, output_size):
     super().__init__()
     #L1
     self.L1_input_size = L1_input_size
