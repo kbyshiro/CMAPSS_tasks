@@ -8,7 +8,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 #LSTM model
-class LSTMRegressor(nn.Module):
+class LSTM(nn.Module):
     def __init__(self, lstm_input_layer, lstm_hidden_layer, lstm_output_layer):
         super().__init__()
         self.input_layer = lstm_input_layer
@@ -32,7 +32,7 @@ class LSTMRegressor(nn.Module):
         return ret
 
 #LSTM and CNN model
-class DAG_CNN_LSTM_Regressor(nn.Module):
+class DAG_CNN_LSTM(nn.Module):
   def __init__(self,L1_input_size, L1_hidden_size, conv_size, 
               conv_stride,conv_out_size, maxpool_size, maxpool_stride, L2_input_size, L2_hidden_size, output_size):
     super().__init__()
