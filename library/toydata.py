@@ -16,7 +16,7 @@ def create_toydata(lifetime, target, residual, n_size):
   y_s3 = []
   for x, y, z in zip(lifetime_t, lifetime_s2, lifetime_s3):
     tmp = np.zeros(x)
-    tmp[target:]  = 1
+    tmp[-target:]  = 1
     t_true.append(tmp)
 
     tmp = np.full((x, 2), fill_value=[np.log(0.1), np.log(0.9)])
