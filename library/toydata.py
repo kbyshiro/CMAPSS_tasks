@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 def create_toydata(lifetime, target, residual, n_size):
-  lifetime_t = np.random.normal(loc=lifetime, scale=10, size=n_size)
+  lifetime_t = np.random.normal(loc=lifetime, scale=50, size=n_size)
   lifetime_t = list(map(int, lifetime_t))
   lifetime_s2 = []
   lifetime_s3 = []
