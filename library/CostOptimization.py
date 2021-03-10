@@ -1,3 +1,6 @@
+import numpy as np
+import torch.nn as nn
+
 class CostOptimizationWithTBM():
   def __init__(self, c0, k1, k2, k3, T0):
     self.c0 = c0
