@@ -191,7 +191,7 @@ class FD_Dataset():
     test_dataloader = torch.utils.data.DataLoader(self.test, batch_size= 1)
     return train_dataloader, test_dataloader
 
-  def GetLabelDataset(self, ws, cs=1, batch_size, data_id=1, target_alarm = 20, model_name='DAG'):
+  def GetLabelDataset(self, ws, cs, batch_size, data_id=1, target_alarm = 20, model_name='DAG'):
     self.load(data_id)
     self.CreateLabel(target_alarm)
     self.DropConst()
