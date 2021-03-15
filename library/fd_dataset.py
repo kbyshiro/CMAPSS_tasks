@@ -150,7 +150,7 @@ class FD_Dataset():
     self.train_dataframe[self.target_name] = self.train_dataframe[self.target_name].transform(lambda x: np.minimum(x, RUL_limit))
     self.test_dataframe[self.target_name] = self.test_dataframe[self.target_name].transform(lambda x: np.minimum(x, RUL_limit))
 
-  def SlideWindow(self, dataframe, ws, cs=1, model_name='DAG'):
+  def SlideWindow(self, dataframe, ws, cs, model_name='DAG'):
     '''
     input: dataframe
     output: dataset obj
@@ -175,7 +175,7 @@ class FD_Dataset():
     dataset.t = t
     return dataset
 
-  def GetRULDataset(self, ws, cs=1, batch_size, data_id=1, limit_flag = False, limit_value = None, model_name='DAG'):
+  def GetRULDataset(self, ws, cs, batch_size, data_id=1, limit_flag = False, limit_value = None, model_name='DAG'):
     self.load(data_id)
     self.CreateRUL()
     self.DropConst()
