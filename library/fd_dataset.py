@@ -7,6 +7,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+import random
 
 class DataSet:
     def __init__(self, X=[], t=[]):
@@ -124,8 +125,8 @@ class FD_Dataset():
       random.seed(1234)
       idx = random.sample(range(1, 101), 20)
       rest_idx = [i for i in range(1, 101) if i not in idx]
-      test = all_data[all_data['UnitNumber'].isin(idx)]
-      train = all_data[all_data['UnitNumber'].isin(rest_idx)]
+      test = all_data[all_data['UnitNumber'].isin(idx)].reset_index(drop=True)
+      train = all_data[all_data['UnitNumber'].isin(rest_idx)].reset_index(drop=True)
 
       # Dataset instance 
       self.train.X = train.iloc[:, :-1]
