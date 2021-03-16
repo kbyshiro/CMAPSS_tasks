@@ -201,7 +201,7 @@ class FD_Dataset():
     self.test = self.SlideWindow(self.test_dataframe, ws, cs, model_name)
 
     train_dataloader = torch.utils.data.DataLoader(self.train, batch_size= batch_size)
-    test_dataloader = torch.utils.data.DataLoader(self.test, batch_size= 1)
+    test_dataloader = torch.utils.data.DataLoader(self.test, batch_size= len(self.test))
     return train_dataloader, test_dataloader
 
 if __name__ == '__main__':
